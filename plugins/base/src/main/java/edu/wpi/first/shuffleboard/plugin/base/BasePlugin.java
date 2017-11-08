@@ -24,6 +24,7 @@ import edu.wpi.first.shuffleboard.plugin.base.data.types.PIDControllerType;
 import edu.wpi.first.shuffleboard.plugin.base.data.types.PowerDistributionType;
 import edu.wpi.first.shuffleboard.plugin.base.data.types.RawByteType;
 import edu.wpi.first.shuffleboard.plugin.base.data.types.RelayType;
+import edu.wpi.first.shuffleboard.plugin.base.data.types.SchedulerType;
 import edu.wpi.first.shuffleboard.plugin.base.data.types.SendableChooserType;
 import edu.wpi.first.shuffleboard.plugin.base.data.types.SpeedControllerType;
 import edu.wpi.first.shuffleboard.plugin.base.data.types.StringArrayType;
@@ -46,6 +47,7 @@ import edu.wpi.first.shuffleboard.plugin.base.widget.NumberSlider;
 import edu.wpi.first.shuffleboard.plugin.base.widget.PIDControllerWidget;
 import edu.wpi.first.shuffleboard.plugin.base.widget.PowerDistributionPanelWidget;
 import edu.wpi.first.shuffleboard.plugin.base.widget.RelayWidget;
+import edu.wpi.first.shuffleboard.plugin.base.widget.SchedulerWidget;
 import edu.wpi.first.shuffleboard.plugin.base.widget.SimpleDialWidget;
 import edu.wpi.first.shuffleboard.plugin.base.widget.SpeedController;
 import edu.wpi.first.shuffleboard.plugin.base.widget.TextView;
@@ -92,6 +94,7 @@ public class BasePlugin extends Plugin {
   @Override
   public List<ComponentType> getComponents() {
     return ImmutableList.of(
+        WidgetType.forAnnotatedWidget(SchedulerWidget.class),
         WidgetType.forAnnotatedWidget(BooleanBox.class),
         WidgetType.forAnnotatedWidget(ToggleButton.class),
         WidgetType.forAnnotatedWidget(ToggleSwitch.class),
@@ -131,6 +134,7 @@ public class BasePlugin extends Plugin {
   @Override
   public Map<DataType, ComponentType> getDefaultComponents() {
     return ImmutableMap.<DataType, ComponentType>builder()
+        .put(new SchedulerType(), WidgetType.forAnnotatedWidget(SchedulerWidget.class))
         .put(new BooleanType(), WidgetType.forAnnotatedWidget(BooleanBox.class))
         .put(new NumberType(), WidgetType.forAnnotatedWidget(TextView.class))
         .put(new StringType(), WidgetType.forAnnotatedWidget(TextView.class))
