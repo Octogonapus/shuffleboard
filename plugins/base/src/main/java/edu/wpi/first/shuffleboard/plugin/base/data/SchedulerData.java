@@ -1,36 +1,44 @@
 package edu.wpi.first.shuffleboard.plugin.base.data;
 
 import edu.wpi.first.shuffleboard.api.data.ComplexData;
-import edu.wpi.first.shuffleboard.plugin.base.widget.CommandData;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SchedulerData extends ComplexData<SchedulerData> {
-  private List<CommandData> data;
+  private String[] names;
+  private Number[] ids;
+  private Number[] cancel;
 
   public SchedulerData() {
-    data = new ArrayList<>();
+    names = new String[]{};
+    ids = new Number[]{};
+    cancel = new Number[]{};
   }
 
   public SchedulerData(Map<String, Object> map) {
-    this();
-    map.values().forEach(val -> {
-      if (val instanceof CommandData) {
-        data.add((CommandData)val);
-      }
-    });
+    names = (String[]) map.getOrDefault("Names", new String[]{});
+    ids = (Number[]) map.getOrDefault("Ids", new Number[]{});
+    cancel = (Number[]) map.getOrDefault("Cancel", new Number[]{});
   }
 
   @Override
   public Map<String, Object> asMap() {
     Map<String, Object> out = new HashMap<>();
-    data.forEach(elem -> out.putAll(elem.asMap()));
+    out.put("Names", names);
+    out.put("Ids", ids);
+    out.put("Cancel", cancel);
     return out;
   }
 
-  public List<CommandData> getData() {
-    return data;
+  public String[] getNames() {
+    return names;
+  }
+
+  public Number[] getIds() {
+    return ids;
+  }
+
+  public Number[] getCancel() {
+    return cancel;
   }
 }
