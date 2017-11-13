@@ -83,6 +83,7 @@ public class BasePlugin extends Plugin {
         new SendableChooserType(),
         new SpeedControllerType(),
         new SubsystemType(),
+        new SchedulerType(),
         new CommandType(),
         new PIDControllerType(),
         new ThreeAxisAccelerometerType(),

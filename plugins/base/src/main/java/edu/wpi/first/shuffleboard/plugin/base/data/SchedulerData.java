@@ -6,19 +6,19 @@ import java.util.Map;
 
 public class SchedulerData extends ComplexData<SchedulerData> {
   private String[] names;
-  private Number[] ids;
-  private Number[] cancel;
+  private double[] ids;
+  private double[] cancel;
 
   public SchedulerData() {
     names = new String[]{};
-    ids = new Number[]{};
-    cancel = new Number[]{};
+    ids = new double[]{};
+    cancel = new double[]{};
   }
 
   public SchedulerData(Map<String, Object> map) {
     names = (String[]) map.getOrDefault("Names", new String[]{});
-    ids = (Number[]) map.getOrDefault("Ids", new Number[]{});
-    cancel = (Number[]) map.getOrDefault("Cancel", new Number[]{});
+    ids = (double[]) map.getOrDefault("Ids", new double[]{});
+    cancel = (double[]) map.getOrDefault("Cancel", new double[]{});
   }
 
   @Override
@@ -34,11 +34,11 @@ public class SchedulerData extends ComplexData<SchedulerData> {
     return names;
   }
 
-  public Number[] getIds() {
+  public double[] getIds() {
     return ids;
   }
 
-  public Number[] getCancel() {
+  public double[] getCancel() {
     return cancel;
   }
 }
